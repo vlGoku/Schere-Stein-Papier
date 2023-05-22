@@ -30,4 +30,31 @@ let playRound = function(){
     }
 }
 
-console.log(playRound());
+function game(){
+    let playerPoints = 0;
+    let cpuPoints = 0;
+
+    for (let i = 0; i<5; i++) {
+        let ergebnis = playRound()
+        console.log(ergebnis)
+        let pWin = ergebnis.indexOf('g');
+        if (pWin === 3) {
+            playerPoints++
+        } else if (pWin === 27){
+            cpuPoints++
+        }console.log(playerPoints, cpuPoints,)
+
+        console.log(playerPoints, cpuPoints,);
+    }
+
+    if (playerPoints > cpuPoints) {
+        console.log ("Der Spieler gewinnt mit " + playerPoints + ":" + cpuPoints);
+    } else if (cpuPoints > playerPoints) {
+        console.log("Der Computer gewinnt mit " + cpuPoints + ":" + playerPoints);
+    } else {
+        console.log("Es ist ein Unentschieden");
+    }
+}
+
+
+game();
