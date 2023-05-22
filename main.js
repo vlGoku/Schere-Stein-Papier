@@ -1,5 +1,5 @@
 function computerPlay(){
-    const cpuPlay = ["Schere", "Stein", "Papier"];
+    const cpuPlay = ["schere", "stein", "papier"];
     const cpuNumb = parseInt(Math.random() * 3);
 
     const cpuSelect = cpuPlay[cpuNumb];
@@ -10,20 +10,20 @@ function computerPlay(){
 
 let playRound = function(){
 
-    const player = prompt("Bitte geben Sie ihre Wahl ein:");
+    const player = prompt("Bitte geben Sie ihre Wahl ein: (Stein, Schere, Papier").toLowerCase();
     const cpu = computerPlay();
 
-    if (player === "Schere" && cpu === "Papier") {
+    if (player === "schere" && cpu === "papier") {
         return "Du gewinnst! - Schere schlägt Papier"
-    } else if (player === "Stein" && cpu === "Schere") {
+    } else if (player === "stein" && cpu === "schere") {
         return  "Du gewinnst! - Stein schlägt Schere"
-    } else if (player === "Papier" && cpu === "Stein") {
+    } else if (player === "papier" && cpu === "stein") {
         return "Du gewinnst! - Papier schlägt Stein"
     } else if (player === cpu) {
         return "Unentschieden"
-    } else if (player === "Schere" && cpu === "Stein") {
+    } else if (player === "schere" && cpu === "stein") {
         return "Du verlierst - Stein schlägt Schere"
-    } else if (player === "Stein" && cpu === "Papier") {
+    } else if (player === "stein" && cpu === "papier") {
         return "Du verlierst - Papier schlägt Stein"
     } else {
         return "Du verlierst - Schere schlägt Papier"
@@ -35,9 +35,10 @@ function game(){
     let cpuPoints = 0;
 
     for (let i = 0; i<5; i++) {
-        let ergebnis = playRound()
-        console.log(ergebnis)
+        let ergebnis = playRound();
+        console.log(ergebnis);
         let pWin = ergebnis.indexOf('g');
+
         if (pWin === 3) {
             playerPoints++
         } else if (pWin === 27){
