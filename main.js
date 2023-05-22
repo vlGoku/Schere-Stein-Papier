@@ -34,7 +34,7 @@ function game(){
     let playerPoints = 0;
     let cpuPoints = 0;
 
-    for (let i = 0; i<5; i++) {
+    while (playerPoints < 5 && cpuPoints < 5) {
         let ergebnis = playRound();
         console.log(ergebnis);
         let pWin = ergebnis.indexOf('g');
