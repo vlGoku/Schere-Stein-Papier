@@ -42,9 +42,7 @@ function game(){
             playerPoints++
         } else if (pWin === 27){
             cpuPoints++
-        }console.log(playerPoints, cpuPoints,)
-
-        console.log(playerPoints, cpuPoints,);
+        }
     }
 
     if (playerPoints > cpuPoints) {
@@ -55,6 +53,3 @@ function game(){
         console.log("Es ist ein Unentschieden");
     }
 }
-
-
-game();
