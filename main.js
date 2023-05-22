@@ -8,13 +8,26 @@ function computerPlay(){
 }
 
 
-const playerSelect = prompt("Bitte geben Sie ihre Wahl ein:");
-const computerSelect = computerPlay();
+let playRound = function(){
 
-function playRound(player, cpu){
+    const player = prompt("Bitte geben Sie ihre Wahl ein:");
+    const cpu = computerPlay();
 
     if (player === "Schere" && cpu === "Papier") {
-        const ergebnis = "Du gewinnst! - Schere schlägt Papier"
-    } 
-
+        return "Du gewinnst! - Schere schlägt Papier"
+    } else if (player === "Stein" && cpu === "Schere") {
+        return  "Du gewinnst! - Stein schlägt Schere"
+    } else if (player === "Papier" && cpu === "Stein") {
+        return "Du gewinnst! - Papier schlägt Stein"
+    } else if (player === cpu) {
+        return "Unentschieden"
+    } else if (player === "Schere" && cpu === "Stein") {
+        return "Du verlierst - Stein schlägt Schere"
+    } else if (player === "Stein" && cpu === "Papier") {
+        return "Du verlierst - Papier schlägt Stein"
+    } else {
+        return "Du verlierst - Schere schlägt Papier"
+    }
 }
+
+console.log(playRound());
