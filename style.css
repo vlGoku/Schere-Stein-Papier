@@ -1,0 +1,54 @@
+h1 {
+  text-align: center;
+}
+
+.uebersicht {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 500px;
+  height: 100px;
+  background-color: peachpuff;
+  border-radius: 10px;
+}
+
+.scorePlayer {
+  grid-row: 2;
+  color: green;
+}
+
+.scoreCpu {
+  grid-row: 2;
+  color: red;
+}
+
+i {
+  font-size: 4rem;
+  padding: 100px;
+}
+.schaltflaeche {
+  text-align: center;
+}
+
+.ausgabe {
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  place-content: center;
+  width: 500px;
+  height: 100px;
+  background-color: peachpuff;
+  border-radius: 10px;
+}
+
+.reset {
+  margin-top: 50px;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 50px;
+  place-content: center;
+}

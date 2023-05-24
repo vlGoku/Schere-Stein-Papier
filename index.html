@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Schere Stein Papier</title>
-</head>
-<body>
-    <script src="main.js"></script>
-</body>
+    <script
+      src="https://kit.fontawesome.com/674fc4c7fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+  </head>
+  <body>
+    <script src="main.js" defer></script>
+    <h1>Rock-Paper-Scissor</h1>
+
+    <div class="uebersicht">
+      <div class="player">Player</div>
+      <div class="computer">Computer</div>
+      <div class="scorePlayer">0</div>
+      <div class="scoreCpu">0</div>
+    </div>
+
+    <div class="schaltflaeche">
+      <i class="symbol fa-regular fa-hand-back-fist" id="rock"></i>
+      <i class="symbol fa-regular fa-hand" id="paper"></i>
+      <i class="symbol fa-regular fa-hand-scissors" id="scissor"></i>
+    </div>
+
+    <div class="ausgabe">###</div>
+
+    <button class="reset">Reset</button>
+  </body>
 </html>

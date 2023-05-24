@@ -1,56 +1,92 @@
-function computerPlay(){
-    const cpuPlay = ["schere", "stein", "papier"];
-    const cpuNumb = parseInt(Math.random() * 3);
+function init() {
+  const symbols = document.querySelectorAll(".symbol");
+  for (let i = 0; i < symbols.length; i++) {
+    symbols[i].addEventListener("click", myFunc);
+  }
 
-    const cpuSelect = cpuPlay[cpuNumb];
+  function myFunc(event) {
+    if (event.target.id === "paper") {
+      playRound("papier");
+    } else if (event.target.id === "rock") {
+      playRound("stein");
+    } else if (event.target.id === "scissor") {
+      playRound("schere");
+    }
+  }
+}
+/* const rock = document.getElementById("rock");
+  const paper = document.getElementById("paper");
+  const scissor = document.getElementById("scissor"); */
+/* rock.addEventListener("click", (event) => {
+    console.log(event.target.id);
+  });*/
 
-    return cpuSelect
+function computerPlay() {
+  const cpuPlay = ["schere", "stein", "papier"];
+  const cpuNumb = parseInt(Math.random() * 3);
+
+  const cpuSelect = cpuPlay[cpuNumb];
+
+  return cpuSelect;
 }
 
+let playerPoints = 0;
+let cpuPoints = 0;
 
-let playRound = function(){
+let playRound = function (playerChoice) {
+  const reset = document.querySelector(".reset");
+  const cpu = computerPlay();
+  let player = playerChoice;
 
-    const player = prompt("Bitte geben Sie ihre Wahl ein: (Stein, Schere, Papier").toLowerCase();
-    const cpu = computerPlay();
+  if (player === "schere" && cpu === "papier") {
+    document.querySelector(".ausgabe").textContent =
+      "Du gewinnst! - Schere schlägt Papier";
+    playerPoints++;
+    document.querySelector(".scorePlayer").textContent = playerPoints;
+  } else if (player === "stein" && cpu === "schere") {
+    document.querySelector(".ausgabe").textContent =
+      "Du gewinnst! - Stein schlägt Schere";
+    playerPoints++;
+    document.querySelector(".scorePlayer").textContent = playerPoints;
+  } else if (player === "papier" && cpu === "stein") {
+    document.querySelector(".ausgabe").textContent =
+      "Du gewinnst! - Papier schlägt Stein";
+    playerPoints++;
+    document.querySelector(".scorePlayer").textContent = playerPoints;
+  } else if (player === cpu) {
+    document.querySelector(".ausgabe").textContent = "Unentschieden";
+  } else if (player === "schere" && cpu === "stein") {
+    document.querySelector(".ausgabe").textContent =
+      "Du verlierst - Stein schlägt Schere";
+    cpuPoints++;
+    document.querySelector(".scoreCpu").textContent = cpuPoints;
+  } else if (player === "stein" && cpu === "papier") {
+    document.querySelector(".ausgabe").textContent =
+      "Du verlierst - Papier schlägt Stein";
+    cpuPoints++;
+    document.querySelector(".scoreCpu").textContent = cpuPoints;
+  } else {
+    document.querySelector(".ausgabe").textContent =
+      "Du verlierst - Schere schlägt Papier";
+    cpuPoints++;
+    document.querySelector(".scoreCpu").textContent = cpuPoints;
+  }
+  if (playerPoints === 5 && playerPoints > cpuPoints) {
+    document.querySelector(".ausgabe").textContent =
+      "Der Spieler gewinnt mit " + playerPoints + ":" + cpuPoints;
+  } else if (cpuPoints === 5 && playerPoints < cpuPoints) {
+    document.querySelector(".ausgabe").textContent =
+      "Der Computer gewinnt mit " + cpuPoints + ":" + playerPoints;
+  }
+  reset.addEventListener(
+    "click",
+    function () {
+      document.querySelector(".ausgabe").textContent = "";
+      document.querySelector(".scorePlayer").textContent = 0;
+      document.querySelector(".scoreCpu").textContent = 0;
+    },
+    false
+  );
+};
 
-    if (player === "schere" && cpu === "papier") {
-        return "Du gewinnst! - Schere schlägt Papier"
-    } else if (player === "stein" && cpu === "schere") {
-        return  "Du gewinnst! - Stein schlägt Schere"
-    } else if (player === "papier" && cpu === "stein") {
-        return "Du gewinnst! - Papier schlägt Stein"
-    } else if (player === cpu) {
-        return "Unentschieden"
-    } else if (player === "schere" && cpu === "stein") {
-        return "Du verlierst - Stein schlägt Schere"
-    } else if (player === "stein" && cpu === "papier") {
-        return "Du verlierst - Papier schlägt Stein"
-    } else {
-        return "Du verlierst - Schere schlägt Papier"
-    }
-}
-
-function game(){
-    let playerPoints = 0;
-    let cpuPoints = 0;
-
-    while (playerPoints < 5 && cpuPoints < 5) {
-        let ergebnis = playRound();
-        console.log(ergebnis);
-        let pWin = ergebnis.indexOf('g');
-
-        if (pWin === 3) {
-            playerPoints++
-        } else if (pWin === 27){
-            cpuPoints++
-        }
-    }
-
-    if (playerPoints > cpuPoints) {
-        console.log ("Der Spieler gewinnt mit " + playerPoints + ":" + cpuPoints);
-    } else if (cpuPoints > playerPoints) {
-        console.log("Der Computer gewinnt mit " + cpuPoints + ":" + playerPoints);
-    } else {
-        console.log("Es ist ein Unentschieden");
-    }
-}
+init();
