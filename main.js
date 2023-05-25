@@ -3,23 +3,17 @@ function init() {
   for (let i = 0; i < symbols.length; i++) {
     symbols[i].addEventListener("click", myFunc);
   }
+}
 
-  function myFunc(event) {
-    if (event.target.id === "paper") {
-      playRound("papier");
-    } else if (event.target.id === "rock") {
-      playRound("stein");
-    } else if (event.target.id === "scissor") {
-      playRound("schere");
-    }
+function myFunc(event) {
+  if (event.target.id === "paper") {
+    playRound("papier");
+  } else if (event.target.id === "rock") {
+    playRound("stein");
+  } else if (event.target.id === "scissor") {
+    playRound("schere");
   }
 }
-/* const rock = document.getElementById("rock");
-  const paper = document.getElementById("paper");
-  const scissor = document.getElementById("scissor"); */
-/* rock.addEventListener("click", (event) => {
-    console.log(event.target.id);
-  });*/
 
 function computerPlay() {
   const cpuPlay = ["schere", "stein", "papier"];
@@ -84,9 +78,16 @@ let playRound = function (playerChoice) {
       document.querySelector(".ausgabe").textContent = "";
       document.querySelector(".scorePlayer").textContent = 0;
       document.querySelector(".scoreCpu").textContent = 0;
+      location.reload();
     },
     false
   );
+  if (playerPoints === 5 || cpuPoints === 5) {
+    const symbols = document.querySelectorAll(".symbol");
+    for (let i = 0; i < symbols.length; i++) {
+      symbols[i].removeEventListener("click", myFunc);
+    }
+  }
 };
 
 init();
