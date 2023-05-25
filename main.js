@@ -31,46 +31,45 @@ let playRound = function (playerChoice) {
   const reset = document.querySelector(".reset");
   const cpu = computerPlay();
   let player = playerChoice;
+  const ausgabe = document.querySelector(".ausgabe");
+  const scorePlayer = document.querySelector(".scorePlayer");
+  const scoreCpu = document.querySelector(".scoreCpu");
 
   if (player === "schere" && cpu === "papier") {
-    document.querySelector(".ausgabe").textContent =
-      "Du gewinnst! - Schere schlägt Papier";
+    ausgabe.textContent = "Du gewinnst! - Schere schlägt Papier";
     playerPoints++;
-    document.querySelector(".scorePlayer").textContent = playerPoints;
+    scorePlayer.textContent = playerPoints;
   } else if (player === "stein" && cpu === "schere") {
-    document.querySelector(".ausgabe").textContent =
-      "Du gewinnst! - Stein schlägt Schere";
+    ausgabe.textContent = "Du gewinnst! - Stein schlägt Schere";
     playerPoints++;
-    document.querySelector(".scorePlayer").textContent = playerPoints;
+    scorePlayer.textContent = playerPoints;
   } else if (player === "papier" && cpu === "stein") {
-    document.querySelector(".ausgabe").textContent =
-      "Du gewinnst! - Papier schlägt Stein";
+    ausgabe.textContent = "Du gewinnst! - Papier schlägt Stein";
     playerPoints++;
-    document.querySelector(".scorePlayer").textContent = playerPoints;
+    scorePlayer.textContent = playerPoints;
   } else if (player === cpu) {
-    document.querySelector(".ausgabe").textContent = "Unentschieden";
+    ausgabe.textContent = "Unentschieden";
   } else if (player === "schere" && cpu === "stein") {
-    document.querySelector(".ausgabe").textContent =
-      "Du verlierst - Stein schlägt Schere";
+    ausgabe.textContent = "Du verlierst - Stein schlägt Schere";
     cpuPoints++;
-    document.querySelector(".scoreCpu").textContent = cpuPoints;
+    scoreCpu.textContent = cpuPoints;
   } else if (player === "stein" && cpu === "papier") {
-    document.querySelector(".ausgabe").textContent =
-      "Du verlierst - Papier schlägt Stein";
+    ausgabe.textContent = "Du verlierst - Papier schlägt Stein";
     cpuPoints++;
-    document.querySelector(".scoreCpu").textContent = cpuPoints;
+    scoreCpu.textContent = cpuPoints;
   } else {
-    document.querySelector(".ausgabe").textContent =
-      "Du verlierst - Schere schlägt Papier";
+    ausgabe.textContent = "Du verlierst - Schere schlägt Papier";
     cpuPoints++;
-    document.querySelector(".scoreCpu").textContent = cpuPoints;
+    scoreCpu.textContent = cpuPoints;
   }
   if (playerPoints === 5 && playerPoints > cpuPoints) {
-    document.querySelector(".ausgabe").textContent =
+    ausgabe.textContent =
       "Der Spieler gewinnt mit " + playerPoints + ":" + cpuPoints;
+    ausgabe.style.backgroundColor = "green";
   } else if (cpuPoints === 5 && playerPoints < cpuPoints) {
-    document.querySelector(".ausgabe").textContent =
+    ausgabe.textContent =
       "Der Computer gewinnt mit " + cpuPoints + ":" + playerPoints;
+    ausgabe.style.backgroundColor = "red";
   }
   reset.addEventListener(
     "click",
